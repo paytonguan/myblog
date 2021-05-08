@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>安装Chromium OS到硬盘实现双启动 | Payton&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="Somewhere Leisure.">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.ff793384.css" as="style"><link rel="preload" href="/myblog/assets/js/app.a3c84fc1.js" as="script"><link rel="preload" href="/myblog/assets/js/2.fdea671f.js" as="script"><link rel="preload" href="/myblog/assets/js/16.26e7b236.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.7847a5a3.js"><link rel="prefetch" href="/myblog/assets/js/11.b2785f97.js"><link rel="prefetch" href="/myblog/assets/js/12.81ffdcd9.js"><link rel="prefetch" href="/myblog/assets/js/13.b8376775.js"><link rel="prefetch" href="/myblog/assets/js/14.21be6db8.js"><link rel="prefetch" href="/myblog/assets/js/15.e4845df9.js"><link rel="prefetch" href="/myblog/assets/js/17.3e01733a.js"><link rel="prefetch" href="/myblog/assets/js/18.cd9f5deb.js"><link rel="prefetch" href="/myblog/assets/js/19.4fc7fa6b.js"><link rel="prefetch" href="/myblog/assets/js/20.d624b5e1.js"><link rel="prefetch" href="/myblog/assets/js/21.879b982f.js"><link rel="prefetch" href="/myblog/assets/js/22.10fcb746.js"><link rel="prefetch" href="/myblog/assets/js/23.6e98a037.js"><link rel="prefetch" href="/myblog/assets/js/24.89f1d957.js"><link rel="prefetch" href="/myblog/assets/js/25.f0710c91.js"><link rel="prefetch" href="/myblog/assets/js/26.957bef02.js"><link rel="prefetch" href="/myblog/assets/js/27.df27e33f.js"><link rel="prefetch" href="/myblog/assets/js/28.e02cd141.js"><link rel="prefetch" href="/myblog/assets/js/29.6788de2d.js"><link rel="prefetch" href="/myblog/assets/js/3.e5125461.js"><link rel="prefetch" href="/myblog/assets/js/30.61ba9f3d.js"><link rel="prefetch" href="/myblog/assets/js/31.166de6f1.js"><link rel="prefetch" href="/myblog/assets/js/32.5a47fa8d.js"><link rel="prefetch" href="/myblog/assets/js/33.f9e473c5.js"><link rel="prefetch" href="/myblog/assets/js/34.0f3b4e36.js"><link rel="prefetch" href="/myblog/assets/js/35.2be1f820.js"><link rel="prefetch" href="/myblog/assets/js/36.87a9ea06.js"><link rel="prefetch" href="/myblog/assets/js/37.24a4b907.js"><link rel="prefetch" href="/myblog/assets/js/38.a0e80546.js"><link rel="prefetch" href="/myblog/assets/js/4.d37862ef.js"><link rel="prefetch" href="/myblog/assets/js/5.1cfadda0.js"><link rel="prefetch" href="/myblog/assets/js/6.73c063ed.js"><link rel="prefetch" href="/myblog/assets/js/7.b4e343ac.js"><link rel="prefetch" href="/myblog/assets/js/8.91d031eb.js"><link rel="prefetch" href="/myblog/assets/js/9.40a34877.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.ff793384.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myblog/" class="home-link router-link-active"><img src="icon.png" alt="Payton's blog" class="logo"> <span class="site-name can-hide">Payton's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myblog/nav.10.World/" class="nav-link">
+  World
+</a></div><div class="nav-item"><a href="/myblog/nav.20.Technology/" class="nav-link router-link-active">
+  Technology
+</a></div><div class="nav-item"><a href="/myblog/nav.30.Skill/" class="nav-link">
+  Skill
+</a></div><div class="nav-item"><a href="/myblog/nav.40.Study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/myblog/nav.50.Other/" class="nav-link">
+  Other
+</a></div> <a href="https://github.com/paytonguan/myblog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myblog/nav.10.World/" class="nav-link">
+  World
+</a></div><div class="nav-item"><a href="/myblog/nav.20.Technology/" class="nav-link router-link-active">
+  Technology
+</a></div><div class="nav-item"><a href="/myblog/nav.30.Skill/" class="nav-link">
+  Skill
+</a></div><div class="nav-item"><a href="/myblog/nav.40.Study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/myblog/nav.50.Other/" class="nav-link">
+  Other
+</a></div> <a href="https://github.com/paytonguan/myblog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Mac</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Windows</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Chrome OS</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myblog/nav.20.Technology/40.ChromeOS/安装Chromium OS到硬盘实现双启动.html" class="active sidebar-link">安装Chromium OS到硬盘实现双启动</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myblog/nav.20.Technology/40.ChromeOS/安装Chromium OS到硬盘实现双启动.html#原生引导" class="sidebar-link">原生引导</a></li><li class="sidebar-sub-header"><a href="/myblog/nav.20.Technology/40.ChromeOS/安装Chromium OS到硬盘实现双启动.html#clover引导" class="sidebar-link">Clover引导</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Computer</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>IOS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Android</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g9apspq7y8j30u00mijs7.jpg" alt=""></p> <p>Chromium OS是Google开发的一款基于Linux内核的系统，需要连网才能使用，整个系统的架构等同于一个Chromium浏览器。</p> <h1 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h1> <p>打开以下链接下载Chromium的镜像。</p> <div class="language- extra-class"><pre class="language-text"><code>https://chromium.arnoldthebat.co.uk/index.php?dir=special&amp;order=modified&amp;sort=desc
+</code></pre></div><p>将Chromium的镜像利用Etcher拷录到U盘中。重启进入USB的Chromium OS，激活Google账号需要使用代理，可通过Google搜索<code>免费代理节点</code>找到。</p> <p>进入Linux系统，在终端运行以下命令安装Gparted。</p> <div class="language- extra-class"><pre class="language-text"><code>sudo apt-get install gparted
+</code></pre></div><p>打开Gparted，选择要安装到的硬盘，在未分配空间上新建以下分区。</p> <table><thead><tr><th></th> <th>分区大小</th> <th>分区格式</th> <th>标签和名称</th></tr></thead> <tbody><tr><td>分区1</td> <td>32MB</td> <td>FAT16</td> <td>EFI-SYSTEM</td></tr> <tr><td>分区2</td> <td>5000MB</td> <td>EXT2</td> <td>ROOT-A</td></tr> <tr><td>分区3</td> <td>Chrome OS系统盘</td> <td>EXT4</td> <td>STATE</td></tr></tbody></table> <p>选择USB驱动器，记下分区位置<code>/dev/sd*</code>。</p> <p>打开终端并输入以下命令，以创建文件夹并挂载U盘系统盘后，复制系统文件到需要安装的硬盘。</p> <div class="language- extra-class"><pre class="language-text"><code>mkdir state
+mkdir root
+mkdir efi
+mkdir localroot
+mkdir localefi
+mkdir localstate
+
+// sdb改为USB的位置
+// sda改为移动分区的位置
+// sda*是EFI-SYSTEM/ROOT-A/STATE的分区位置
+// [username]是Linux的用户名
+sudo mount /dev/sdb12 /home/[username]/efi
+sudo mount /dev/sda* /home/[username]/localefi
+sudo cp -av /home/[username]/efi/* /home/[username]/localefi
+
+sudo mount /dev/sdb3 /home/[username]/root
+sudo mount /dev/sda* /home/[username]/localroot
+sudo cp -av /home/[username]/root/* /home/[username]/localroot
+
+sudo mount /dev/sdb1 /home/[username]/state
+sudo mount /dev/sda* /home/[username]/localstate
+sudo cp -av /home/[username]/state/* /home/[username]/localstate
+
+sudo gedit /home/[username]/localroot/usr/sbin/write_gpt.sh
+</code></pre></div><p>在打开的文件中搜索<code>base_vars</code>以及<code>partition_vars</code>，只保留EFI-SYSTEM、ROOT-A、STATE以及对应数字的引导信息（共六个），然后修改每个分区的参数（在Gparted可查看）。示例如下。</p> <div class="language- extra-class"><pre class="language-text"><code>PARTITION_SIZE_ROOT_A=5242880000
+  RESERVED_EBS_ROOT_A=0
+     DATA_SIZE_ROOT_A=5242880000
+        FORMAT_ROOT_A=
+     FS_FORMAT_ROOT_A=ext2
+    FS_OPTIONS_ROOT_A=&quot;&quot;
+ PARTITION_NUM_ROOT_A=&quot;6&quot;
+     PARTITION_SIZE_3=5242880000
+       RESERVED_EBS_3=0
+          DATA_SIZE_3=5242880000
+             FORMAT_3=
+          FS_FORMAT_3=ext2
+         FS_OPTIONS_3=&quot;&quot;
+      PARTITION_NUM_3=&quot;6&quot;
+</code></pre></div><p>修改完成后保存，在终端输入以下命令以复制分区文件到主目录。</p> <div class="language- extra-class"><pre class="language-text"><code>cp -av /home/[username]/localroot/usr/sbin/write_gpt.sh /home/[username]
+</code></pre></div><h1 id="引导"><a href="#引导" class="header-anchor">#</a> 引导</h1> <h2 id="原生引导"><a href="#原生引导" class="header-anchor">#</a> 原生引导</h2> <p>安装完成后重新启动，拔出U盘，在BIOS里会多出Chromium OS的启动项，启动即可。</p> <p>若需要修改Chromium的grub引导项，可打开Linux，在终端输入以下命令后，记下ROOT-A的<code>PARTUDID</code>。</p> <div class="language- extra-class"><pre class="language-text"><code>sudo blkid
+</code></pre></div><p>打开<code>EFI-SYSTEM</code>分区的<code>efi/boot/grub.cfg</code>，只留第一个menuentry，将<code>PARTUUID=</code>的值修改为记下的UUID，Menuentry里的名字改为Chromium OS即可。</p> <h2 id="clover引导"><a href="#clover引导" class="header-anchor">#</a> Clover引导</h2> <p>配置config.plist，扫描项中勾选<code>Linux</code>，隐藏项中添加<code>vmlinuz</code>即可。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myblog/nav.20.Technology/30.Linux/Linux系统的安装与配置.html" class="prev">
+        Linux系统的安装与配置
+      </a></span> <span class="next"><a href="/myblog/nav.20.Technology/50.Computer/刷写BIOS和调整整机性能的操作.html">
+        刷写BIOS和调整整机性能的操作
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myblog/assets/js/app.a3c84fc1.js" defer></script><script src="/myblog/assets/js/2.fdea671f.js" defer></script><script src="/myblog/assets/js/16.26e7b236.js" defer></script>
+  </body>
+</html>
